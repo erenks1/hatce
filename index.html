@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hatçe, bugün senin..! 🎉</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+
+  body {
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    font-family: 'Poppins', sans-serif;
+    color: #3a3a3a;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 480px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px 30px;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(214, 51, 132, 0.3);
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: #d63384;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  .main-photo {
+    width: 240px;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(214, 51, 132, 0.3);
+    margin-bottom: 20px;
+  }
+
+  .message {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  .btn {
+    background-color: #d63384;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 22px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 12px 0;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+
+  .btn:hover {
+    background-color: #b42c70;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .event-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 6px 15px rgba(214, 51, 132, 0.4);
+  }
+
+  .note {
+    font-size: 1rem;
+    margin: 15px 0 25px;
+    color: #444;
+    line-height: 1.4;
+  }
+
+  .final-quote {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #d63384;
+    margin: 20px 0 15px;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Hatçe, bugün senin..! 🎉</h1>
+    <img src="foto.png" alt="Hatçe'nin Fotoğrafı" class="main-photo" />
+
+    <p class="message">
+      Senin gibi biriyle tanışıyor olmanın ve hayatımda bulunmanın mutluluğunu yaşıyorum. Kalbin kadar güzel bir yıl olsun. İyi ki doğdun, iyi ki varsın Hatçe 💖
+    </p>
+
+    <button id="pastaBtn" class="btn">Pasta Zamanı 🎂</button>
+
+    <div id="pastaSection" class="hidden">
+      <img src="pasta.png" alt="Pasta" class="event-img" />
+      <p class="note">
+        Doğum günün kutlu olsun yeni yaşında her şey yavaş yavaş güzelleşir umarım. Unutma! sen her zaman çok değerlisin. 🎁
+      </p>
+
+      <button id="konfetiBtn" class="btn">Konfeti Patlat 🎊</button>
+
+      <div id="konfetiSection" class="hidden">
+        <img src="konfeti.png" alt="Konfeti" class="event-img" />
+        <p class="note">
+          Kalbin kadar temiz varlığın kadar da özel bir yılın olsun. 🌟
+        </p>
+
+        <button id="kalpBtn" class="btn">Kalpten Notlar ❤️</button>
+
+        <div id="kalpSection" class="hidden">
+          <img src="kalp.png" alt="Kalpten Notlar" class="event-img" />
+          <p class="note">
+            Her şeyin en hayırlısı ve güzeli senin için olsun inşallah. Zaman insana ne getirir bilinmez belki ama inanıyorum ki zaman bizim için de güzel bir şeyler getirir. Unutma! ben her zaman aynı yerdeyim. 💫
+          </p>
+
+          <button id="finalBtn" class="btn">Küçük Final 🎬</button>
+
+          <div id="finalSection" class="hidden">
+            <img src="final.png" alt="Final" class="event-img" />
+            <p class="note">
+              Buraya kadar geldin teşekkürler. Yüzünde ufacık da olsa bir gülümseme olduysa ne mutlu bana. 😊
+            </p>
+
+            <button id="sonSozBtn" class="btn">Son Söz ✨</button>
+
+            <div id="sonSozSection" class="hidden">
+              <p class="final-quote">Sabırla bekleyen kalbin en sevdiği dil, gülümsemektir.</p>
+              <button id="replayBtn" class="btn">Bir Daha Gülümse 😊</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <audio id="birthdayAudio" src="ses.mp3"></audio>
+  </div>
+
+  <script>
+    const pastaBtn = document.getElementById("pastaBtn");
+    const konfetiBtn = document.getElementById("konfetiBtn");
+    const kalpBtn = document.getElementById("kalpBtn");
+    const finalBtn = document.getElementById("finalBtn");
+    const sonSozBtn = document.getElementById("sonSozBtn");
+    const replayBtn = document.getElementById("replayBtn");
+
+    const pastaSection = document.getElementById("pastaSection");
+    const konfetiSection = document.getElementById("konfetiSection");
+    const kalpSection = document.getElementById("kalpSection");
+    const finalSection = document.getElementById("finalSection");
+    const sonSozSection = document.getElementById("sonSozSection");
+
+    const audio = document.getElementById("birthdayAudio");
+
+    function scrollToElement(el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    pastaBtn.addEventListener("click", () => {
+      pastaSection.classList.remove("hidden");
+      audio.play();
+      audio.loop = true;
+      scrollToElement(pastaSection);
+    });
+
+    konfetiBtn.addEventListener("click", () => {
+      konfetiSection.classList.remove("hidden");
+      scrollToElement(konfetiSection);
+    });
+
+    kalpBtn.addEventListener("click", () => {
+      kalpSection.classList.remove("hidden");
+      scrollToElement(kalpSection);
+    });
+
+    finalBtn.addEventListener("click", () => {
+      finalSection.classList.remove("hidden");
+      scrollToElement(finalSection);
+    });
+
+    sonSozBtn.addEventListener("click", () => {
+      sonSozSection.classList.remove("hidden");
+      scrollToElement(sonSozSection);
+    });
+
+    replayBtn.addEventListener("click", () => {
+      // Sayfayı başa kaydırır, ama müzik aynı şekilde devam eder
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>
